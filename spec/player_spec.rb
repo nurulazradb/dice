@@ -19,12 +19,10 @@ describe Player do
     end
   end
 
-  context ".roll_dice" do
-    it { is_expected.to respond_to(:roll_dice) }
-
+  context "can roll a dice" do
     it "return any number between 1 to 6" do
       first_dice = player.dices.first
-      expect(%w(1 2 3 4 5 6)).to include(player.roll_dice(first_dice))
+      expect(%w(1 2 3 4 5 6)).to include(player.dices.first.roll)
     end
   end
 
