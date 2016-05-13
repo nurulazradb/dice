@@ -25,8 +25,8 @@ describe Game do
     end
   end
 
-  context ".set_winner" do
-    it { is_expected.to respond_to(:set_winner) }
+  context ".add_winner" do
+    it { is_expected.to respond_to(:add_winner) }
 
     it "still in plays" do
       expect(game.is_ended?).to be_falsy
@@ -34,9 +34,9 @@ describe Game do
 
     it "has a winner" do
       p1 = Player.new
-      game.set_winner(p1)
+      game.add_winner(p1)
 
-      expect(game.winner).to eql(p1)
+      expect(game.winners).to eql([p1])
     end
 
     it "has ended" do

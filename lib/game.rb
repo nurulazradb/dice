@@ -1,20 +1,20 @@
 class Game
-  attr_reader :players, :winner
+  attr_reader :players, :winners
 
   def initialize
     @players = []
-    @winner = nil
+    @winners = []
   end
 
   def add_player(player)
     @players << player
   end
 
-  def set_winner(player)
-    @winner = player
+  def add_winner(player)
+    @winners << player
   end
 
   def is_ended?
-    !@winner.nil?
+    !@winners.empty?
   end
 end
