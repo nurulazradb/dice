@@ -1,4 +1,8 @@
+$LOAD_PATH << '.'
+require_relative 'rule'
+
 class Player
+  include Rule
   attr_reader :dices
 
   def initialize
