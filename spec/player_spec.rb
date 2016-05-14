@@ -2,7 +2,7 @@ require 'player'
 require 'dice'
 
 describe Player do
-  player = Player.new
+  player = Player.new('Player A')
 
   context "when it is first created" do
     it "has empty dices" do
@@ -11,7 +11,9 @@ describe Player do
   end
 
   context ".add_dice" do
-    it { is_expected.to respond_to(:add_dice) }
+    it "respond to :add_dice" do
+      expect(player).to respond_to(:add_dice)
+    end
 
     it "has 1 dice" do
       dice = Dice.new
@@ -27,7 +29,9 @@ describe Player do
   end
 
   context ".remove_dice" do
-    it { is_expected.to respond_to(:remove_dice) }
+    it "respond to :remove_dice" do
+      expect(player).to respond_to(:remove_dice)
+    end
 
     it "will have zero dice" do
       player.remove_dice(player.dices.first)

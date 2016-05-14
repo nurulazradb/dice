@@ -14,12 +14,12 @@ describe Game do
     it { is_expected.to respond_to(:add_player) }
 
     it "has 1 player" do
-      p1 = Player.new
+      p1 = Player.new("Player A")
       expect { game.add_player(p1) }.to change { game.players.count }.by 1
     end
 
     it "has 2 players" do
-      p2 = Player.new
+      p2 = Player.new("Player B")
       expect { game.add_player(p2) }.to change { game.players.count }.by 1
       expect(game.players.count).to eq 2
     end
@@ -33,7 +33,7 @@ describe Game do
     end
 
     it "has a winner" do
-      p1 = Player.new
+      p1 = Player.new("Player C")
       game.add_winner(p1)
 
       expect(game.winners).to eql([p1])
