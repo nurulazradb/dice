@@ -40,29 +40,19 @@ while !game.is_ended?
   p3.move_dices(p4)
   p4.move_dices(p1)
 
-  # discard dices
-  # must invoke again after moving dices
-  players.each {|player| player.discard_dices}
-
   # add stolen dices
   players.each do |player|
     if !player.stolen_dices.empty?
-      player.stolen_dices.each do |stolendice|
-        player.add_dice(stolendice)
-      end
-      player.stolen_dices.clear
+      player.get_stolen_dices
     end
   end
 
   puts "\s\sAfter dice moved/removed"
-  puts "\s\s#{p1.name}: #{p1.dices.collect {|x| x.last_roll}.join(', ')}"
-  puts "\s\s#{p2.name}: #{p2.dices.collect {|x| x.last_roll}.join(', ')}"
-  puts "\s\s#{p3.name}: #{p3.dices.collect {|x| x.last_roll}.join(', ')}"
-  puts "\s\s#{p4.name}: #{p4.dices.collect {|x| x.last_roll}.join(', ')}"
+  players.each {|player| puts "#{player.name}: #{player.last_rolls}"}
 
   puts ""
 
-  players.each {|player| game.add_winner(player) if player.dices.count < 1}
+  players.each {|player| game.add_winner(player) if player.dices.empty?}
 
   round += 1
 end
